@@ -1,6 +1,6 @@
 <template>
   <div class="buttons">
-    <button v-for="(emoticon, index) in emoticons" :key="index" :id="emoticon" class="btn-emoticon"></button>
+    <button v-for="(emoticon, index) in emoticons" :key="index" :id="emoticon" value="emoticon" class="btn-emoticon" @click="vote"></button>
   </div>
 </template>
 
@@ -12,6 +12,12 @@ export default {
     return {
       emoticons: ['very-bad', 'bad', 'okay', 'good', 'very-good'],
     };
+  },
+  methods: {
+    vote(e) {
+      var voted = e.target.value;
+      localStorage.setItem('vote', voted);
+    },
   },
 };
 </script>
